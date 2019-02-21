@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "coral-box-229919",
+  "private_key_id": "d831ff9cca7129b0892f47408a669fb65d2a29f8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDCvThNm9YAJo7z\ntYPal0cqd1dcnnAIOvYtYDk4qlkL+wQwMIL1Vh9r+3NMDQYk7YlXXzhvk0sJlQgf\no8sW7pYjhniFNf9Lt7JlHJlkeR9mRI7Sv2xAttySOPqO7IyWLscCXOFwnk2kWLLz\n29nkscui72tgr1ENgs0xV5hF8u0cB/fxfUjPlTE1e+X1IN8OnsmNT8VJnoXCGelI\nqk+BsdanlF8S28xAKFaX9Wr9ehiGufDdNIB0gvauHUYRxh39ktm1z9kE5G+Nlx0n\n+X9cwAPh75vitkltlq1s3zEDXnFrk8VCs2n9uC+0tFRI0q1g/kS7FodH+idz5AyI\nae59JuAJAgMBAAECggEAAPbPxdbsS1ilhfMbevbwryGuCkCODdpgiuG3ss4+wzKL\n/HhBrmODDmVYASkXg1IKPKdKknHXHKNoXy4P9LYmbTiulXvqk/Dt67Z6026j6fKT\nsZspQZTuLgqlFz/4TmDe/cXg3K5UnyhMbYI516TM3RVZ8Z2jP/b/xftjftAos0Yc\nHCA1uIUgXI4tx+TSv/XSBieMWEnX5ZYa/mqJbH3jR1NJhfXRPkje1vO14JNMnvIW\nyKveT58iVy2qMIiRN/cu6z/FWTNepoXZJP6+Qn96+YoaIJWdnXszUpu72dzJh5er\nlk2Eg8xwmeaUQuaG/qslBhFXlbkCUuDUHgS/hIQr4QKBgQDumb1MolYWaYr6Y7d2\nhRPRbGcQqW8YWSuX1SMqnxyG4WZDbYrACrBUchFPyqTHHCAUSRH+o65t/VkL5JlN\nSMR4wdcH0q+Wtd3LG8Zxsg5EfgVtA3JMPHsH811DF6/KhfQsUCFfiHpXyYRIjE6d\nc61QhaqTMf9sTE35xKvLS9xTYQKBgQDQ8KnqTvczgcaCPnN0FT2HBkGAlNvxOsWv\n0blwJaIVg+rVQwN/pvaUME5L9Q2C7juGkZT1ve/y7VGQUVUeZckcdhtkCigTzp5U\nTuS1LGUrb47KKNAtHQCUkC4H4ca8bTUz6PyijXk6xOCOmJ5QRhneHQCo2VDtJfQq\nfV1CHej1qQKBgFx5SVzCLgtRrIOO0jQlL6EjGm7ivCP7q2GVQaPrNusvwKqxce0s\nN1sDOqJqL6Lby7MQ/uBqH9iRMEnjt2a0pTEIL4bgqR0IL4XgpfC6ybzR+thdVZcm\neaiDMconDAK6GAB0rfqQspoDiDl156IuiyWCKLIT1qLqj+4Vw19vb10BAoGAfqEM\n6bOYAEBrta3xvO3Oj1HMSwhs0COFggxCLeSw+gcsQLnPmgLvuFoaadCHss19iA4d\nUF4f2YPZBfU0+CpKG5S8/wFkzrRPotr5o4/XdN60lHLt0Bmeq2tCaoZ8MuCg+OgA\njOffDC4bxnBaql4B+WpsZujmMgPpmgLGjXahJJkCgYBksiBj43/dGjlPU3W8iyXL\n1i30KTkDH7FWRQtWH0AtoqF8kWkmRN6MrLN67jLa8Fju+8KCLIC/04UcnFtKXDDH\nc5tEO4j3fmfHecV7s6dgwPrfSI6+F0HSYKhPKkff9D242OwbWwNYAGUzwwqVLzWy\nUWGR1m9a44TqYhKXW2XBQQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "mydatastore@coral-box-229919.iam.gserviceaccount.com",
+  "client_id": "109366049314385210529",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mydatastore%40coral-box-229919.iam.gserviceaccount.com"
+}

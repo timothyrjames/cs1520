@@ -1,0 +1,43 @@
+#DisplayArea {
+  margin: 10px;
+  border-width: 2px;
+  border-color: darkgreen; 
+  border-style: solid;
+  padding: 5px;
+}
+
+#ErrorArea {
+  font-weight: bold;
+  color: red;
+  display: none;
+}
+
+nav a.NavLink {
+  text-decoration: none;
+  border-right: 2px solid black;
+  padding-right: 5px;
+}
+
+nav a.NavLink:last-child {
+  border-right: 0px;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 10pt;
+  margin: 4px;
+}
+
+nav {
+  margin-top: 0px;
+  margin-bottom: 16px;
+}
+
+header {
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+li {
+  margin-bottom: 6px;
+}

@@ -1,0 +1,29 @@
+{% extends '_base.html' %}
+{% block header %}
+This is the header area for the main page.
+{% endblock %}
+{% block content %}
+<div>
+This page demonstrates how to use a GET request to load JSON data from the
+server.  Click the button to make an AJAX request to the server and load a 
+simple object.
+<div>
+<button onclick="buttonClicked();">Click Me</button>
+</div>
+<div id="DisplayArea">
+</div>
+<script>
+  
+function displayDataOnPage(result, targetUrl) {
+  if (result.Text) {
+    document.getElementById('DisplayArea').innerHTML = result.Text;
+  } else {
+    showError("Failed to load data from the server.");
+  }
+}
+
+function buttonClicked() {
+  getData('/get-dddata', displayDataOnPage);
+}
+</script>
+{% endblock %}
