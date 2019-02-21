@@ -49,10 +49,15 @@ def load_sli_items():
 def save_item():
   q = request.form['quantity']
   title = request.form['title']
+  item_id = request.form['id']
   json_result = {}
   
   try:
-    slidata.create_list_item(ShoppingListItem(None, title, q))
+    if item_id:
+      item = ShoppingListItem(item_id, title, q)
+      slidata.save_list_item(item)
+    else:
+      slidata.create_list_item(ShoppingListItem(None, title, q))
     json_result['ok'] = True
   except Exception as exc:
     log(str(exc))
@@ -73,6 +78,15 @@ def delete_item():
     json_result['error'] = 'The item was not removed.'
 
   return Response(json.dumps(json_result), mimetype='application/json')
+
+
+@app.route('/get-item/<itemid>')
+def get_item(itemid):
+  item = slidata.get_list_item(itemid)
+  d = item.to_dict()
+  d['id'] = itemid
+  return Response(json.dumps(d), mimetype='application/json')
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)

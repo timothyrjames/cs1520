@@ -40,8 +40,12 @@ function sendJsonRequest(targetUrl, parameters, callbackFunction) {
   xmlHttp.onreadystatechange = function() {
     if (xmlHttp.readyState == 4) {
       // note that you can check xmlHttp.status here for the HTTP response code
-      let myObject = JSON.parse(xmlHttp.responseText);
-      callbackFunction(myObject, targetUrl, parameters);
+      try {
+        let myObject = JSON.parse(xmlHttp.responseText);
+        callbackFunction(myObject, targetUrl, parameters);
+      } catch (exc) {
+        showError("There was a problem at the server.");
+      }
     }
   }
   postParameters(xmlHttp, targetUrl, parameters);
@@ -53,8 +57,12 @@ function getData(targetUrl, callbackFunction) {
   xmlHttp.onreadystatechange = function() {
     if (xmlHttp.readyState == 4) {
       // note that you can check xmlHttp.status here for the HTTP response code
-      let myObject = JSON.parse(xmlHttp.responseText);
-      callbackFunction(myObject, targetUrl);
+      try {
+        let myObject = JSON.parse(xmlHttp.responseText);
+        callbackFunction(myObject, targetUrl);
+      } catch (exc) {
+        showError("There was a problem at the server.");
+      }
     }
   }
   // parameters: method="GET", url=targetUrl, asynchronous=true

@@ -24,10 +24,17 @@ and Cloud Datastore.
 </div>
 <script>
 
-function saveItem() {
+function saveItem(id) {
   let params = {};
-  params['quantity'] = document.getElementById("item_quantity").value;
-  params['title'] = document.getElementById("item_title").value;
+  if (id) {
+    params['id'] = id;
+    params['quantity'] = document.getElementById("edit_item_quantity").value;
+    params['title'] = document.getElementById("edit_item_title").value;
+  } else {
+    // if no ID is supplied this is creating a new item.
+    params['quantity'] = document.getElementById("item_quantity").value;
+    params['title'] = document.getElementById("item_title").value;
+  }
   sendJsonRequest('save-item', objectToParameters(params), itemSaved);
 }
 
@@ -51,7 +58,7 @@ function displayList(result, targetUrl) {
   if (result && result.length) {
     let text = '<ul>';
     for (var i = 0; i < result.length; i++) {
-      text += '<li>';
+      text += '<li id="li_' + result[i].id + '">';
       text += '<button onclick="editItem(\'' + result[i].id + '\');">edit</button> ';
       text += '<button onclick="deleteItem(\'' + result[i].id + '\');">x</button> ';
       text += result[i].quantity + ') ' + result[i].title;
@@ -63,6 +70,19 @@ function displayList(result, targetUrl) {
   } else {
     document.getElementById("DisplayArea").innerHTML = 'No list items.';
   }
+}
+
+function editItem(id) {
+  getData('/get-item/' + id, itemLoaded);
+}
+
+function itemLoaded(result, targetUrl) {
+  let text = '';
+  text += '<input type="number" id="edit_item_quantity" value="' + result.quantity + '"> ) ';
+  text += '<input type="text" id="edit_item_title" value="' + result.title + '"> ';
+  text += '<button onclick="saveItem(' + result.id + ');">save</button> ';
+  text += '<button onclick="loadItems();">cancel</button> ';
+  document.getElementById('li_' + result.id).innerHTML = text;
 }
 
 function deleteItem(id) {
