@@ -1,0 +1,11 @@
+{% extends '_base.html' %}
+{% block header %}
+This is the header area for the second page.
+{% endblock %}
+{% block content %}
+<ol>
+  {% for fruit in fruits %}
+  <li>{{ fruit }}</li>
+  {% endfor %}
+</ol>
+{% endblock %}

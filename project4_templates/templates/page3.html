@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+{% block header %}
+This is the header area for the third page.
+{% endblock %}
+{% block content %}
+<table>
+  {% for state in states %}
+  <tr>
+    <td>{{ state }}</td>
+    <td>{{ states[state]}}</td>
+  </tr>
+  {% endfor %}
+</ol>
+{% endblock %}
