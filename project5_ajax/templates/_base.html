@@ -1,12 +1,14 @@
 <html>
   <head>
     <title>{{page_title}}</title>
-    <link rel="stylesheet" href="static/style4.css">
+    <link rel="stylesheet" href="static/style.css">
     <script>
 
+// this function converts a simple key-value object to a parameter string.
 function objectToParameters(obj) {
   let text = '';
   for (var i in obj) {
+    // encodeURIComponent is a built-in function that escapes to URL-safe values
     text += encodeURIComponent(i) + '=' + encodeURIComponent(obj[i]) + '&';
   }
   return text;

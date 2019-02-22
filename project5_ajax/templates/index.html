@@ -14,6 +14,8 @@ simple object.
 </div>
 <script>
   
+// when we get a response, this function is called.  we use it to update the 
+// content in the page.
 function displayDataOnPage(result, targetUrl) {
   if (result.Text) {
     document.getElementById('DisplayArea').innerHTML = result.Text;
@@ -22,8 +24,10 @@ function displayDataOnPage(result, targetUrl) {
   }
 }
 
+// when the button was clicked, load data from the server.
 function buttonClicked() {
   getData('/get-data', displayDataOnPage);
 }
+
 </script>
 {% endblock %}

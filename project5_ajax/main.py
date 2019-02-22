@@ -15,7 +15,7 @@ def log(msg):
 @app.route('/')
 @app.route('/index.html')
 def root():
-  return render_template('index.html', page_title='Load Data Ddemo')
+  return render_template('index.html', page_title='Load Data Demo')
 
 
 @app.route('/get-data')
@@ -35,8 +35,12 @@ def shopping_list():
 
 @app.route('/load-sl-items')
 def load_sli_items():
+  # first we load the list items
   sli_list = slidata.get_list_items()
   json_list = []
+
+  # then we convert it into a normal list of dicts so that we can easily turn it
+  # into JSON
   for sl_item in sli_list:
     d = sl_item.to_dict()
     d['id'] = str(sl_item.id)
@@ -47,6 +51,7 @@ def load_sli_items():
 
 @app.route('/save-item', methods=['POST'])
 def save_item():
+  # retrieve the parameters from the request
   q = request.form['quantity']
   title = request.form['title']
   item_id = request.form['id']
@@ -68,6 +73,7 @@ def save_item():
 
 @app.route('/delete-item', methods=['POST'])
 def delete_item():
+  # retrieve the parameters from the request
   sli_id = request.form['id']
   json_result = {}
   try:
@@ -80,6 +86,7 @@ def delete_item():
   return Response(json.dumps(json_result), mimetype='application/json')
 
 
+# here we use a Flask shortcut to pull the itemid from the URL.
 @app.route('/get-item/<itemid>')
 def get_item(itemid):
   item = slidata.get_list_item(itemid)

@@ -6,6 +6,8 @@ from google.cloud.datastore.key import Key
 from shoppinglistitem import ShoppingListItem
 
 
+# We need to identify the entity type for our list items.
+# note that this is arbitrary and can be whatever you like.
 SLI_ENTITY_TYPE = 'ShoppingListItem'
 PROJECT_ID = 'coral-box-229919'
 
