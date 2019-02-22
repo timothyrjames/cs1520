@@ -11,6 +11,8 @@ app = Flask(__name__)
 
 def log(msg):
   """Log a simple message."""
+  # Look at: https://console.cloud.google.com/logs to see your logs.
+  # Make sure you have "stdout" selected.
   print('main: %s' % msg)
 
 

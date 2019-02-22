@@ -5,6 +5,7 @@ from google.cloud import datastore
 from google.cloud.datastore.key import Key
 from shoppinglistitem import ShoppingListItem
 
+# Look at: https://console.cloud.google.com/datastore to see your entities.
 
 # We need to identify the entity type for our list items.
 # Note that this data type is arbitrary and can be whatever you like.
@@ -14,6 +15,8 @@ PROJECT_ID = 'coral-box-229919'
 
 def log(msg):
   """Log a simple message."""
+  # Look at: https://console.cloud.google.com/logs to see your logs.
+  # Make sure you have "stdout" selected.
   print('slidata: %s' % msg)
 
 
