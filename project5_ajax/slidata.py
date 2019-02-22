@@ -13,9 +13,8 @@ PROJECT_ID = 'coral-box-229919'
 
 
 def log(msg):
-  """Log a message using INFO level."""
-  # you may find it useful to change "logging.info" to "print" for easy debugging
-  logging.info('slidata: %s' % msg)
+  """Log a simple message."""
+  print('slidata: %s' % msg)
 
 
 def convert_to_object(entity):

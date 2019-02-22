@@ -10,9 +10,8 @@ app = Flask(__name__)
 
 
 def log(msg):
-  """Log a message using INFO level."""
-  # you may find it useful to change "logging.log" to "print" for easy debugging
-  logging.log('main: %s' % msg)
+  """Log a simple message."""
+  print('main: %s' % msg)
 
 
 @app.route('/')
@@ -60,9 +59,11 @@ def save_item():
   # retrieve the parameters from the request
   q = request.form['quantity']
   title = request.form['title']
-  item_id = request.form['id']
+  item_id = None
+  if 'id' in request.form:
+    item_id = request.form['id']
   json_result = {}
-  
+
   try:
     if item_id:
       item = ShoppingListItem(item_id, title, q)
