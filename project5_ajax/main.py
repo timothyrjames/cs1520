@@ -1,4 +1,5 @@
 import json
+import logging
 import slidata
 
 from flask import Flask, Response, render_template, request
