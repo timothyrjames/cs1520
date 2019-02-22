@@ -9,7 +9,9 @@ app = Flask(__name__)
 
 
 def log(msg):
-  print('main: ' + msg)
+  """Log a message using INFO level."""
+  # you may find it useful to change "logging.log" to "print" for easy debugging
+  logging.log('main: %s' % msg)
 
 
 @app.route('/')
@@ -36,6 +38,8 @@ def shopping_list():
 @app.route('/load-sl-items')
 def load_sli_items():
   # first we load the list items
+  
+  log('loading list items.')
   sli_list = slidata.get_list_items()
   json_list = []
 
@@ -45,6 +49,7 @@ def load_sli_items():
     d = sl_item.to_dict()
     d['id'] = str(sl_item.id)
     json_list.append(d)
+  
   responseJson = json.dumps(json_list)
   return Response(responseJson, mimetype='application/json')
 
@@ -60,8 +65,10 @@ def save_item():
   try:
     if item_id:
       item = ShoppingListItem(item_id, title, q)
+      log('saving list item for ID: %s' % item_id)
       slidata.save_list_item(item)
     else:
+      log('saving new list item')
       slidata.create_list_item(ShoppingListItem(None, title, q))
     json_result['ok'] = True
   except Exception as exc:
@@ -77,6 +84,7 @@ def delete_item():
   sli_id = request.form['id']
   json_result = {}
   try:
+    log('deleting item for ID: %s' % sli_id)
     slidata.delete_list_item(sli_id)
     json_result['ok'] = True
   except Exception as exc:
@@ -89,6 +97,7 @@ def delete_item():
 # here we use a Flask shortcut to pull the itemid from the URL.
 @app.route('/get-item/<itemid>')
 def get_item(itemid):
+  log('retrieving item for ID: %s' % itemid)
   item = slidata.get_list_item(itemid)
   d = item.to_dict()
   d['id'] = itemid
