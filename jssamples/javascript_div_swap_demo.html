@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <div id="content"></div>
+
+    <script>
+      function Something(name) {
+        this.name = name;
+        this.toHtml = function() {
+          return "<b>" + this.name + "</b>";
+        }
+      }
+
+      var a = new Something("This is A");
+      var b = new Something("This is B");
+    </script>
+
+    <button onclick="document.getElementById('content').innerHTML = a.toHtml();">Set A</button>
+    <button onclick="document.getElementById('content').innerHTML = b.toHtml();">Set B</button>
+    
+  </body>
+</html>
