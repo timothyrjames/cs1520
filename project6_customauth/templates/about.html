@@ -1,0 +1,7 @@
+{% extends '_base.html' %}
+{% block content %}
+<form method="post" action="/saveabout">
+    <textarea name="about" rows="10" cols="50">{{text}}</textarea>
+    <div><input type="submit"></div>
+</form>
+{% endblock %}

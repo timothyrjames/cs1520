@@ -1,0 +1,8 @@
+{% extends '_base.html' %}
+{% block content %}
+<ul>
+{% for course in courses %}
+<li><a href="/course/{{course.code}}">{{course.name}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

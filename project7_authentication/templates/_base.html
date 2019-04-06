@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>{{page_title}}</title>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="671493523802-ovm9gv2ogda868000krf94r9kh1bllft.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="stylesheet" href="static/style.css">
+    <script>
+
+// this function converts a simple key-value object to a parameter string.
+function objectToParameters(obj) {
+  let text = '';
+  for (var i in obj) {
+    // encodeURIComponent is a built-in function that escapes to URL-safe values
+    text += encodeURIComponent(i) + '=' + encodeURIComponent(obj[i]) + '&';
+  }
+  return text;
+}
+
+function createXmlHttp() {
+  let xmlhttp;
+  if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  if (!(xmlhttp)) {
+    alert("Your browser does not support AJAX!");
+  }
+  return xmlhttp;
+}
+
+function postParameters(xmlHttp, targetUrl, parameters) {
+  if (xmlHttp) {
+    console.log("Creating POST request to " + targetUrl);
+    xmlHttp.open("POST", targetUrl, true); // XMLHttpRequest.open(method, url, async)
+    xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    console.log("Sending parameters: " + parameters);
+    xmlHttp.send(parameters);
+   }
+}
+
+function sendJsonRequest(targetUrl, parameters, callbackFunction) {
+  let xmlHttp = createXmlHttp();
+  xmlHttp.onreadystatechange = function() {
+    if (xmlHttp.readyState == 4) {
+      // note that you can check xmlHttp.status here for the HTTP response code
+      try {
+        let myObject = JSON.parse(xmlHttp.responseText);
+        callbackFunction(myObject, targetUrl, parameters);
+      } catch (exc) {
+        showError("There was a problem at the server.");
+      }
+    }
+  }
+  postParameters(xmlHttp, targetUrl, parameters);
+}
+
+    </script>
+  </head>
+  <body>
+    <h1>Authentication Demo{% if page_title %}: {{page_title}}{% endif %}</h1>
+    <nav>
+      <a href="index.html" class="NavLink">Main Page</a>
+    </nav>
+    <header>
+      {% block header %}{% endblock %}
+    </header>
+    <section id="ErrorArea"></section>
+    <section>
+      {% block content %}{% endblock %}
+    </section>
+  </body>
+</html>

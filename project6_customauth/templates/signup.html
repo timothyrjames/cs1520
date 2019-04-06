@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+{% block header %}
+Sign Up
+{% endblock %}
+{% block content %}
+<form method="post" action="/register">
+    <table>
+        <tr>
+            <td>Desired Username</td>
+            <td><input type="text" name="username"></td>
+        </tr>
+        <tr>
+            <td>Email Address</td>
+            <td><input type="email" name="email"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="Instruction">We won't use your email address to spam you, but it might be useful if you need to retrieve your password.</td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password1"></td>
+        </tr>
+        <tr>
+            <td>Repeat Password</td>
+            <td><input type="password" name="password2"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="Instruction">Go ahead and repeat that, just in case there was a mistake.</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit"></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

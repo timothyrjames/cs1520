@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+{% block header %}
+Log In
+{% endblock %}
+{% block content %}
+<form method="post" action="/dosignin">
+    <table>
+        <tr>
+            <td>Username</td>
+            <td><input type="input" name="username"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit"></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

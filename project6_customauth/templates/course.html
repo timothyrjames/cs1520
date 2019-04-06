@@ -1,0 +1,11 @@
+{% extends '_base.html' %}
+{% block content %}
+<h2>Course Description</h2>
+{{course.description}}
+<h2>Lessons</h2>
+<ul>
+{% for lesson in course.lessons %}
+  <li><a href="/lesson/{{course.code}}/{{lesson.id}}">{{lesson.title}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
