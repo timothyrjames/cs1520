@@ -31,13 +31,13 @@ def course_page(coursecode):
 @app.route('/lesson/<coursecode>/<lessonid>')
 def lesson_page(coursecode, lessonid):
     course_object = lmsdatastore.load_course(coursecode)
-    log('loaded course object: ' + str(course_object.code))
     lesson_object = lmsdatastore.load_lesson(coursecode, int(lessonid))
-    log('loaded lesson object: ' + str(lesson_object.title))
     title = course_object.name + ' / ' + lesson_object.title
     user = get_user()
     show_completion_link = True
     if user:
+        # We use the code below to identify if the user has already marked this
+        # lesson as completed.
         completions = lmsdatastore.load_completions(user)
         if course_object.code in completions:
             if lesson_object.id in completions[course_object.code]:
@@ -133,7 +133,7 @@ def user_page(username):
     about_lines = about.splitlines()
     completions = lmsdatastore.load_completions(username)
 
-    # we use the following loop to sort the lessons in lexical order.
+    # We use the following loop to sort the lessons in lexical order.
     for course in completions:
         lesson_list = []
         for lesson_id in completions[course]:
@@ -145,6 +145,7 @@ def user_page(username):
                      completions=completions)
 
 
+# We should only use this to populate our data for the first time.
 @app.route('/createdata')
 def createdata():
     lmsdatastore.create_data()
@@ -152,14 +153,18 @@ def createdata():
 
 
 def get_password_hash(pw):
-    """Creating this as a separate method allows us to perform this operation
-    consistently every time we use it."""
+    """This will give us a hashed password that will be extremlely difficult to 
+    reverse.  Creating this as a separate function allows us to perform this
+    operation consistently every time we use it."""
 
     encoded = pw.encode('utf-8')
     return hashlib.sha256(encoded).hexdigest()
 
 
 def get_user():
+    """If our session has an identified user (i.e., a user is signed in), then
+    return that username.""" 
+
     return session.get('user', None)
 
 

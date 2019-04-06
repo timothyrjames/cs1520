@@ -11,6 +11,7 @@ class Course(object):
         self.lessons.append(lesson)
 
     def to_dict(self):
+        """ If we were using AJAX, we'd probably use this method for JSON."""
         d = {
             'code': self.code,
             'name': self.name,
@@ -50,5 +51,5 @@ class User(object):
         return {
             'username': self.username,
             'about': self.about,
-            'completions': self.completions,
+            'email': self.email,
         }

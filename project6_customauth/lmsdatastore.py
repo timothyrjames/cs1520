@@ -10,6 +10,8 @@ _LESSON_ENTITY = 'LmsLesson'
 
 
 def _get_client():
+    """Build a datastore client."""
+
     return datastore.Client(_PROJECT_ID)
 
 
@@ -23,6 +25,7 @@ def _load_key(client, entity_type, entity_id=None, parent_key=None):
     """Load a datastore key using a particular client, and if known, the ID.  Note
     that the ID should be an int - we're allowing datastore to generate them in 
     this example."""
+
     key = None
     if entity_id:
         key = client.key(entity_type, entity_id, parent=parent_key)
@@ -34,6 +37,7 @@ def _load_key(client, entity_type, entity_id=None, parent_key=None):
 
 def _load_entity(client, entity_type, entity_id, parent_key=None):
     """Load a datstore entity using a particular client, and the ID."""
+
     key = _load_key(client, entity_type, entity_id, parent_key)
     entity = client.get(key)
     log('retrieved entity for ' + str(entity_id))
@@ -41,6 +45,8 @@ def _load_entity(client, entity_type, entity_id, parent_key=None):
 
 
 def _course_from_entity(course_entity):
+    """Translate the Course entity to a regular old Python object."""
+
     code = course_entity.key.name
     name = course_entity['name']
     desc = course_entity['description']
@@ -50,6 +56,8 @@ def _course_from_entity(course_entity):
 
 
 def _lesson_from_entity(lesson_entity, include_content=True):
+    """Translate the Lesson entity to a regular old Python object."""
+
     lesson_id = lesson_entity.key.id
     title = lesson_entity['title']
     content = ''
@@ -61,6 +69,8 @@ def _lesson_from_entity(lesson_entity, include_content=True):
 
 
 def load_course(course_code):
+    """Load a course from the datastore, based on the course code."""
+
     log('loading course: ' + str(course_code))
     client = _get_client()
     course_entity = _load_entity(client, _COURSE_ENTITY, course_code)
@@ -74,6 +84,8 @@ def load_course(course_code):
 
 
 def load_courses():
+    """Load all of the courses."""
+
     client = _get_client()
     q = client.query(kind=_COURSE_ENTITY)
     q.order = ['-name']
@@ -84,6 +96,8 @@ def load_courses():
 
 
 def load_lesson(course_code, lesson_id):
+    """Load a lesson under the given course code."""
+
     log('loading lesson detail: ' + str(course_code) + ' / ' + str(lesson_id))
     client = _get_client()
     parent_key = _load_key(client, _COURSE_ENTITY, course_code)
@@ -92,6 +106,9 @@ def load_lesson(course_code, lesson_id):
 
 
 def load_user(username, passwordhash):
+    """Load a user based on the passwordhash; if the passwordhash doesn't match
+    the username, then this should return None."""
+
     client = _get_client()
     q = client.query(kind=_USER_ENTITY)
     q.add_filter('username', '=', username)
@@ -104,6 +121,7 @@ def load_user(username, passwordhash):
 def load_about_user(username):
     """Return a string that represents the "About Me" information a user has
     stored."""
+
     user = _load_entity(_get_client(), _USER_ENTITY, username)
     if user:
         return user['about']
@@ -112,6 +130,9 @@ def load_about_user(username):
 
 
 def load_completions(username):
+    """Load a dictionary of coursecode => lessonid => lesson name based on the
+    lessons the user has marked complete."""
+
     client = _get_client()
     user_entity = _load_entity(client, _USER_ENTITY, username)
     courses = dict()
@@ -126,6 +147,8 @@ def load_completions(username):
 
 
 def save_user(user, passwordhash):
+    """Save the user details to the datastore."""
+
     client = _get_client()
     entity = datastore.Entity(_load_key(client, _USER_ENTITY, user.username))
     entity['username'] = user.username
@@ -137,6 +160,8 @@ def save_user(user, passwordhash):
 
 
 def save_about_user(username, about):
+    """Save the user's about info to the datastore."""
+
     client = _get_client()
     user = _load_entity(client, _USER_ENTITY, username)
     user['about'] = about
@@ -144,6 +169,9 @@ def save_about_user(username, about):
 
 
 def save_completion(username, coursecode, lessonid):
+    """Save a completion (i.e., mark a course as completed in the 
+    datastore)."""
+
     client = _get_client()
     course_key = _load_key(client, _COURSE_ENTITY, coursecode)
     lesson_key = _load_key(client, _LESSON_ENTITY, lessonid, course_key)
@@ -157,6 +185,9 @@ def save_completion(username, coursecode, lessonid):
 
 
 def create_data():
+    """You can use this function to populate the datastore with some basic
+    data."""
+
     client = _get_client()
     entity = datastore.Entity(client.key(_USER_ENTITY, 'testuser'),
                               exclude_from_indexes=[])
