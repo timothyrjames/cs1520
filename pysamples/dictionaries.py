@@ -1,9 +1,9 @@
 
 states = {
-  "NY": "Newyork",
-  "NJ": "New Jersey",
-  "IA": "Iowa",
-  "PA": "Pennsylvania"
+    "NY": "Newyork",
+    "NJ": "New Jersey",
+    "IA": "Iowa",
+    "PA": "Pennsylvania"
 }
 
 print(states)
@@ -18,6 +18,4 @@ print("NY" in states)
 print("New York" in states)
 
 for state_code in states:
-  print(state_code + ": " + states[state_code])
-
-  
+    print(state_code + ": " + states[state_code])
