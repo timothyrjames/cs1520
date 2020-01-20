@@ -1,16 +1,31 @@
-# JavaScript Samples
+# JavaScript Tutorial
 
-## JavaScript Samples
+## JavaScript Tutorial - Samples Walkthrough
 
 This tutorial explains each of the JavaScript samples. Each step will explain 
 one area of the JavaScript language.
 
+You can view the execution of the functions described here by going to
+[this link](http://cs1520a.appspot.com/javascript_samples.html) in your
+browser.
+
+To run this tutorial, enter the following command inside the Cloud Shell:
+
+```bash
+teachme javascript_samples.md
+```
+
 ## Comments
+
+Comments in JavaScript are remarkably similar to Java. Single line comments are
+quite common.
 
 ```JavaScript
 // Comments in JavaScript are just like in Java.
 // You can use 2 forward slashes for a one line comment.
 ```
+
+Multi-line comments are also common in JavaScript.
 
 ```JavaScript
 /*
@@ -20,12 +35,17 @@ one area of the JavaScript language.
  */
 ```
 
+[JsDoc](https://jsdoc.app/about-getting-started.html) is not standard but is 
+reasonably popular.
+
 ```JavaScript
 // There are JsDoc comments, like javadoc, but they aren't standard :(
 ```
+
 ## Functions
 
 In JavaScript, we use the "function" keyword to declare a function.
+
 ```JavaScript
 function firstFunction() {
   console.log("Functions don't have to return values.");
@@ -48,6 +68,23 @@ function fourthFunction() {
 }
 ```
 
+There are alternatives; arrow functions are becoming quite common in
+JavaScript.
+
+```JavaScript
+(a, b) => {
+    return a + b;
+}
+```
+
+Anonymous functions are also becoming more popular for certain operations.
+
+```JavaScript
+function(x) {
+  return x + 1;
+});
+```
+
 ## Operators
 
 Operators in JavaScript are similar to Java.
@@ -63,6 +100,8 @@ function operators() {
 ```
 
 ## Boolean Operators
+
+Boolean operators in JavaScript are also very similar to Java.
 
 ```JavaScript
 function booleanOperators() {
@@ -85,6 +124,8 @@ function booleanOperators() {
 
 ## Strings
 
+Strings in JavaScript behave mostly similarly to Java.
+
 ```JavaScript
 function strings() {
 
@@ -101,7 +142,11 @@ function strings() {
 }
 ```
 
-## Varibles
+## Variables
+
+Variables can be declared a few ways in JavaScript. Historically they've been
+declared using the "var" keyword; more and more you will see "let" as it has
+some built-in protection.
 
 ```JavaScript
 function variables() {
@@ -123,7 +168,22 @@ function variables() {
 }
 ```
 
+You can also use the const keyword, but be careful as const (as well as let)
+have only been well supported in browsers for a few years and older browsers
+will not support them.
+
+```JavaScript
+const SALES_TAX_RATE = 0.7;
+```
+
 ## Types
+
+JavaScript is a weakly typed language; it will automatically try to convert
+types for you (especially when combining different types) and this can lead to
+some unpredictable and challenging situations. 
+
+There is a typeof function that you can use to determine the underlying type
+of data.
 
 ```JavaScript
 function types() {
@@ -139,6 +199,8 @@ function types() {
 ```
 
 ## If Statements
+
+If statements in JavaScript work syntactically the same as Java.
 
 ```JavaScript
 function ifStatements() {
@@ -168,6 +230,8 @@ function ifStatements() {
 
 ## While Loops
 
+While loops in JavaScript are syntactically the same as in Java.
+
 ```JavaScript
 function whileLoops() {
   let i = 0;
@@ -189,6 +253,8 @@ function whileLoops() {
 
 ## For Loops
 
+Basic, iterating for loops in JavaScript are syntactically the same as Java.
+
 ```JavaScript
 function forLoops() {
 
@@ -208,7 +274,30 @@ function forLoops() {
 }
 ```
 
+JavaScript does support a for-each loop; however it's been deprecated and is
+of limited value in practice.  It is typically used with objects; its 
+behavior can sometimes yield unexpected results.
+
+```JavaScript
+for (let i in x) {
+    console.log(i);
+}
+```
+
+for-of loops are supported for several years and should be mostly safe to use
+in your JavaScript.  The code below will output each of the values in "x".
+
+```JavaScript
+let x = ['a', 'b', 'c'];
+for (let i of x) {
+    console.log(i);
+}
+```
+
 ## Arrays
+
+JavaScript has arrays that are dynamic; they look like Java arrays, but you can
+easily add or remove values from them.
 
 ```JavaScript
 function arrays() {
@@ -236,6 +325,10 @@ function arrays() {
 ```
 
 ## Maps
+
+[Maps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) 
+are a new concept in JavaScript; they provide improvements over just using 
+objects as if they were maps, but have only been supported for a few years.
 
 ```JavaScript
 function maps() {
@@ -272,6 +365,9 @@ function maps() {
 
 ## Objects
 
+The oldest and most common way to build classes in JavaScript is to use a 
+function as a constructor. It's awkward but works in really old browsers.
+
 ```JavaScript
 function objects() {
   function Pet(name, age) {
@@ -295,3 +391,21 @@ function objects() {
   console.log(pets[2] instanceof Pet);
 }
 ```
+
+Also common is to declare objects in JSON format.
+
+```JavaScript
+let bubbles = {
+    name: 'Bubbles',
+    age: 11,
+    toString: function() {
+        return this.name + ' is ' + this.age;
+    }
+}
+console.log(bubbles.toString());
+```
+
+A new way to declare classes in JavaScript is to use the
+[class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+keyword; however, as with let and const, this has only been supported for a few
+years, so be careful as it is not universally supported in older browsers.
