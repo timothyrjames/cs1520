@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <title>HTML samples</title>
+    </head>
+    <body>
+        <header>
+            <h1>HTML Samples</h1>
+        </header>
+        <nav>
+            <a href="links.html">Link Samples</a>
+            <a href="images.html">Image Samples</a>
+            <a href="lists.html">List Samples</a>
+            <a href="sections.html">Section Samples</a>
+            <a href="tables.html">Table Samples</a>
+            <a href="forms.html">Form Samples</a>
+        </nav>
+        <section>
+            <h1>Form Elements</h1>
+            Form elements typically will have a <em>name</em> or <em>id</em> attribute,
+            and they all support the <em>disabled</em> attribute.
+            <form>
+                <section>
+                    <h2>Textareas</h2>
+                    Common attributes:
+                    <ul>
+                        <li>cols: how many character columns should be in this texatarea</li>
+                        <li>readonly: set to "readonly" to make the textarea read-only</li>
+                        <li>rows: how many character rows should be in this textarea</li>
+                    </ul>
+                    <br>
+                    This textarea has 30 columns and 8 rows.
+                    <br>
+                    <textarea cols="30" rows="8">Text inside the textarea element.</textarea>
+                </section>
+                <section>
+                    <h2>Select Fields</h2>
+                    Common attributes:
+                    <ul>
+                        <li>multiple: set to "multiple" to allow multiple selections</li>
+                        <li>size: how many values are displayed in the select box</li>
+                    </ul>
+                    <br>
+                    This select box is plain.
+                    <br>
+                    <select>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                    <br><br>
+                    This select box has size = 3 and multiple = multiple.
+                    <br>
+                    <select size="3" multiple="multiple">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                        <option>Option 6</option>
+                    </select>
+                </section>
+                <section>
+                    <h2>Button</h2>
+                    input type="button"<br>
+                    Buttons probably should have a value.    We usually connect them to JavaScript.
+                    <br>
+                    <input type="button" value="My Button Value">
+                </section>
+                <section>
+                    <h2>Checkbox</h2>
+                    input type="checkbox"<br>
+                    Checkboxes are pretty straightforward.<br>
+                    <input type="checkbox">A checkbox<br>
+                    <input type="checkbox">Another checkbox<br>
+                    <input type="checkbox">Still 1 more checkbox<br>
+                </section>
+                <section>
+                    <h2>Color</h2>
+                    <input type="color"<br>
+                    You can set the default color with the "value" attribute.<br>
+                    <input type="color" value="#f981f3">
+                </section>
+                <section>
+                    <h2>Date</h2>
+                    <input type="date"<br>
+                    Dates are pretty straightforward - usually a special control for entering a date.<br>
+                    <input type="date">
+                </section>
+                <section>
+                    <h2>Email</h2>
+                    input type="email"<br>
+                    Validates that this is a properly formatted email address.<br>
+                    <input type="email" error="abcd">
+                </section>
+                <section>
+                    <h2>Number</h2>
+                    input type="number"<br>
+                    Validates that this is a number.<br>
+                    <input type="number">
+                </section>
+                <section>
+                    <h2>Password</h2>
+                    input type="password"<br>
+                    Masks the input.<br>
+                    <input type="password">
+                </section>
+                <section>
+                    <h2>Radio</h2>
+                    input type="radio"<br>
+                    Radio buttons with the same name are automatically grouped.<br>
+                    Usually different radio buttons have different "value" attributes.<br>
+                    <input name="radio1" type="radio">First
+                    <input name="radio1" type="radio">Second
+                    <input name="radio1" type="radio">Third
+                </section>
+                <section>
+                    <h2>Range</h2>
+                    input type="range"<br>
+                    You may see these used with max, min, step, and value attributes.<br>
+                    This one has max="250", min="0", step="50", and value="200".<br>
+                    <input type="range" max="250" min="0" step="50" value="200">
+                </section>
+                <section>
+                    <h2>Text</h2>
+                    input type="text"<br>
+                    The most basic input.<br>
+                    <input type="text">
+                </section>
+                <section>
+                    <h2>Time</h2>
+                    input type="time"<br>
+                    Special input control for entering time.<br>
+                    <input type="time">
+                </section>
+                <section>
+                    <h2>URL</h2>
+                    input type="url"<br>
+                    Validates that this is a URL.<br>
+                    <input type="url">
+                </section>
+            </form>
+        </section>
+    </body>
+</html>
