@@ -1,0 +1,22 @@
+td {
+    padding: 2px;
+    border: 1px solid #000000;
+    margin: 0px;
+    background-color: #ffffff;
+}
+
+table {
+    background-color: #000000;
+}
+
+nav {
+    padding-bottom: 20px;
+}
+
+.cowpen {
+    border: 2px dotted #804060;
+    width: 400px;
+    height: 200px;
+    padding-top: 60px;
+    text-align: center;
+}

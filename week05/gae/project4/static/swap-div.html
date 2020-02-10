@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav>
+            <a href="/swap">Swap Content</a> | <a href="/sandwich">Build Sandwiches</a> | <a href="/cow">Drag Cows</a>
+        </nav>
+
+        <div id="content">Nothing here</div>
+
+        <script>
+            function Something(name) {
+                this.name = name;
+                this.toHtml = function() {
+                    return "<b>" + this.name + "</b>";
+                }
+            }
+
+            var a = new Something("This is A");
+            var b = new Something("This is B");
+
+            function swapToA() {
+                document.getElementById('content').innerHTML = a.toHtml();
+            }
+
+            function swapToB() {
+                document.getElementById('content').innerHTML = b.toHtml();
+            }
+        </script>
+
+        <button onclick="swapToA();">Set A</button>
+        <button onclick="swapToB();">Set B</button>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script>
+
+            // we'll use ID to store the ID of the thing we drag.
+            var myId;
+
+            // we'll use these variables to store our scores.
+            var cow1score = 0;
+            var cow2score = 0;
+
+
+            function drop(id,evt) {
+                evt.preventDefault(); //preventing the default action of the browser
+                var data = document.getElementById(myId); // retreiving the original "dragged" item
+                id.innerHTML = data.innerHTML; // setting the target HTML to dragged item
+            
+                // if we're dragging cow1, we'll add to that score
+                if (myId == "cow1"){
+                    cow1score = cow1score + 1;
+                }
+            
+                // if it's cow2, we'll add to that score.
+                if (myId == "cow2"){
+                    cow2score = cow2score + 1;
+                }
+            
+                // we'll update our score.
+                var text = "Score:<br>Cow1: " + cow1score + "<br>Cow 2: " + cow2score;
+                document.getElementById("score").innerHTML = text;
+            }
+
+            // this will be called when we drag - we'll just retain our ID for later.
+            function drag(id,evt) {
+                myId = id;
+            }
+
+            // this will be called when we drag into our fence
+            function allowDrop(evt) {
+                evt.preventDefault();
+            }
+
+        </script>
+    </head>
+    <body>
+        <nav>
+            <a href="/swap">Swap Content</a> | <a href="/sandwich">Build Sandwiches</a> | <a href="/cow">Drag Cows</a>
+        </nav>
+        <h1>COW DRAGGER</h1>
+        <div id="score">
+            SCOREBOARD<br>
+            Cow 1: 0<br>
+            Cow 2: 0
+        </div>
+        <div class="cowpen" ondrop="drop(this,event);" ondragover="allowDrop(event);">
+        </div>
+        <div id="cow1" draggable="true" ondragstart="drag(this.id,event);">
+            <img width="150px" src="cow1.png" border="0">
+        </div>
+        <div id="cow2" draggable="true" ondragstart="drag(this.id,event);">
+            <img width="150px" src="cow2.png" border="0">
+        </div>
+    </body>
+</html>
