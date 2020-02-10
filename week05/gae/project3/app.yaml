@@ -1,8 +1,8 @@
 runtime: python37
 
 handlers:
-- url: /static2
-  static_dir: static2
+- url: /s
+  static_dir: static
 
 - url: /.*
   script: auto

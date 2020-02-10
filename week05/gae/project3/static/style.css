@@ -1,47 +1,53 @@
 nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: gray;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: gray;
 }
 
 nav ul li {
-  float: left;
+    float: left;
 }
 
 nav ul li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px;
-  padding-left: 1px;
-  text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    padding-left: 1px;
+    text-decoration: none;
 }
 
 nav ul li a:hover {
-  background-color: black;
+    background-color: black;
 }
 
 body {
-  font-family: Tahoma, Verdana, sans-serif;
+    font-family: Tahoma, Verdana, sans-serif;
 }
 
 section {
-  font-size: 9pt;
+    font-size: 9pt;
 }
 
 .bluesection {
-  background-color: darkblue;
-  color: white;
+    background-color: darkblue;
+    color: white;
 }
 
 aside {
-  background-color: lightpink; 
-  float: right;
+    background-color: lightpink; 
+    float: right;
+}
+
+article span {
+    background-color: #d0d0d0;
+    padding: 2px;
+    margin: 12px;
 }
 
 footer {
-  font-style: italic;
-  font-size: 8pt;
+      font-style: italic;
+    font-size: 8pt;
 }
