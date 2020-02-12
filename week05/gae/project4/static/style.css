@@ -20,3 +20,9 @@ nav {
     padding-top: 60px;
     text-align: center;
 }
+
+#Points {
+    color: darkred;
+    font-size: 28pt;
+    font-weight: bold;
+}

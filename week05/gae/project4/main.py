@@ -17,6 +17,11 @@ def sandwich():
 
 @app.route('/cow')
 def cow():
+    return flask.redirect('/s/cow-clicker.html', code=302)
+
+
+@app.route('/drag')
+def drag():
     return flask.redirect('/s/cow-dragger.html', code=302)
 
 

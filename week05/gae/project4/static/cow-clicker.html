@@ -1,15 +1,40 @@
-{% extends '_base.html' %}
-{% block header %}
-WELCOME TO COW CLICKER
-{% endblock %}
-{% block content %}
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            var points = 0;
 
-<div>
-  Click the cow for points.
-</div>
-<div>
-<img src="/static/cow.jpeg" onclick="clickThatCow();">
-</div>
-<div id="Points"></div>
+            function clickThatCow() {
+                points += 100;
 
-{% endblock %}
+                // This retrieves the "div" element with id "Points"
+                var pointsDiv = document.getElementById('Points');
+
+                pointsDiv.innerHTML = 'Points: <em>' + points + '</em>';
+
+                // We can use the code below to add a border around the points on every
+                // other click.
+                if (points % 200 === 0) {
+                    pointsDiv.style.borderStyle = 'dashed';
+                    pointsDiv.style.borderSize = 5;
+                } else {
+                    pointsDiv.style.borderStyle = 'none';
+                }
+                console.log("You now have " + points + " points!");
+            }
+        </script>
+    </head>
+    <body>
+        <nav>
+            <a href="/swap">Swap Content</a> | <a href="/sandwich">Build Sandwiches</a> | <a href="/cow">Cow Clicker</a> | <a href="/drag">Drag Cows</a>
+        </nav>
+        <h1>WELCOME TO COW CLICKER</h1>
+        <div>
+            Click the cow for points.
+        </div>
+        <div>
+            <img src="cow.jpeg" onclick="clickThatCow();">
+        </div>
+        <div id="Points"></div>
+    </body>
+</html>

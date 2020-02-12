@@ -4,11 +4,10 @@ This is the header area for the third page.
 {% endblock %}
 {% block content %}
 <table>
-  {% for state in states %}
-  <tr>
-    <td>{{ state }}</td>
-    <td>{{ states[state]}}</td>
-  </tr>
-  {% endfor %}
-</ol>
+    {% for state in states %}
+        <tr>
+            <td>{{ state }}</td>
+            <td>{{ states[state] }}</td>
+        </tr>
+    {% endfor %}
 {% endblock %}
