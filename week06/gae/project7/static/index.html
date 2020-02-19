@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Shopping List Demo</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="scripts.js">
+        </script>
+    </head>
+    <body>
+        <section id="ErrorArea"></section>
+        <h1>Shopping List</h1>
+        <section>
+            <div>
+            This page demonstrates how to store and retrieve some data using JSON, AJAX,
+            and Cloud Datastore.
+            <div id="DisplayArea"></div>
+            <div>
+                <h3>Add Shopping List Item</h3>
+                <table>
+                    <tr>
+                        <td>Quantity:</td>
+                        <td>Item:</td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" id="item_quantity"></td>
+                        <td><input type="text" id="item_title"></td>
+                        <td><button onclick="saveItem();">Add</button></td>
+                    </tr>
+                </table>
+            </div>
+            <script>
+
+                // when the page loads, let's load the initial items into the list.
+                loadItems();
+
+            </script>
+        </section>
+    </body>
+</html>
