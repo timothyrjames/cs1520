@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This tutorials walks you through setting up the Cloud Datastore Emulator. This
+This tutorial walks you through setting up the Cloud Datastore Emulator. This
 will allow you to more effectively test your application without having to use
 a live Cloud Datastore environment.
 
@@ -20,14 +20,15 @@ This should show that you are using JDK version 1.8.* - some Java 8 version.
 
 ## Installing the Cloud Datastore Emulator
 
-We'll need to install the Cloud Datastore Emulator:
+First, we'll need to install the Cloud Datastore Emulator:
 
 ```bash
 gcloud components install cloud-datastore-emulator
 ```
 
 Before starting your emulator, you'll need to set your project.  You'll want
-to identify the project you're currently testing or deploying to:
+to identify the project you're currently testing or deploying to and set it
+using the gcloud config set command:
 
 ```bash
 gcloud config set project YOUR_PROJECT_ID
@@ -64,7 +65,7 @@ You'll see something that looks like this:
 ```
 
 Note the PID for cloud_datastore and java. The Java PID should be a number
-following the PID for cloud_datastore closely. In the example above, you can 
+closely following the PID for cloud_datastore. In the example above, you can 
 see that the PID for cloud_datastore is 1156 and the PID for java is 1158.
 
 You can shut down the emulator using the kill command - you'll want to 
@@ -110,7 +111,7 @@ your application locally.
 
 ## Running Your Application
 
-Use the command below; the dev_appserver.py might *not* pick up the environment
+Use the command below; the dev_appserver.py *might not* pick up the environment
 variables automatically, but the command below passes the values you set in
 the commands in the previous step.
 
@@ -118,5 +119,6 @@ the commands in the previous step.
 dev_appserver.py --env_var DATASTORE_DATASET=$DATASTORE_DATASET --env_var DATASTORE_EMULATOR_HOST=$DATASTORE_EMULATOR_HOST --env_var DATASTORE_EMULATOR_HOST_PATH=$DATASTORE_EMULATOR_HOST_PATH --env_var DATASTORE_HOST=$DATASTORE_HOST --env_var DATASTORE_PROJECT_ID=$DATASTORE_PROJECT_ID .
 ```
 
-Try [this link](https://ssh.cloud.google.com/devshell/proxy?authuser=0&port=8080&environment_id=default)
+Once it's running, try
+[this link](https://ssh.cloud.google.com/devshell/proxy?authuser=0&port=8080&environment_id=default)
 to view your application directly.
