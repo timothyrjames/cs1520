@@ -2,51 +2,63 @@ body {
     font-family: Roboto, Tahoma, sans-serif;
     font-size: 11pt;
 }
+
 h1 {
     font-size: 18pt;
     color: #1C3144;
     border-bottom: 5px solid #D00000;
     margin-bottom: 10px;
 }
+
 h2 {
     font-size: 12pt;
     color: #1C3144;
 }
+
 nav {
     border-bottom: 1px solid #3F88C5;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
+
 a {
     color: #3F88C5;
 }
+
 a:hover {
     text-decoration: none;
 }
+
 nav a {
     text-decoration: none;
     padding-right: 15px;
 }
+
 nav a:hover {
     color: #FFBA08;
 }
+
 header {
     font-style: italic;
     margin-bottom: 20px;
 }
+
 .Instruction {
     font-style: italic;
     font-size: 8pt;
     text-align: center;
 }
+
 .Error {
     color: #D00000;
     font-weight: bold;
     font-style: italic;
 }
+
 .CompletionLink {
     margin-top: 30px;
 }
+
 .CompletedLessons {
     margin-bottom: 40px;
 }
