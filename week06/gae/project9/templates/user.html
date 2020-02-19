@@ -3,24 +3,36 @@
 Progress for {{page_title}}
 {% endblock %}
 {% block content %}
-{% if completions %}
+{% 
+if completions 
+%}
 <div class="CompletedLessons">
-<h2>Completed Lessons</h2>
-<ul>
-{% for course in completions %}
-<li>{{course}}</li>
-<ol>
-  {% for lesson in completions[course] %}
-    <li>{{lesson}}</li>
-  {% endfor %}
-</ol>
-{% endfor %}
-</ul>
+    <h2>Completed Lessons</h2>
+    <ul>
+{%
+    for course in completions 
+%}
+        <li>{{course}}</li>
+        <ol>
+{% 
+        for lesson in completions[course]
+%}
+            <li>{{lesson}}</li>
+{%
+        endfor
+%}
+        </ol>
+{% 
+    endfor
+%}
+    </ul>
 </div>
-{% endif %}
+{% 
+endif
+%}
 <h2>About {{page_title}}</h2>
 {% for line in lines %}
-  {{line}}<br>
+{{line}}<br>
 {% else %}
 <i>No details.</i>
 {% endfor %}

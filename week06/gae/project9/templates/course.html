@@ -5,7 +5,7 @@
 <h2>Lessons</h2>
 <ul>
 {% for lesson in course.lessons %}
-  <li><a href="/lesson/{{course.code}}/{{lesson.id}}">{{lesson.title}}</a></li>
+    <li><a href="/lesson/{{course.code}}/{{lesson.id}}">{{lesson.title}}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

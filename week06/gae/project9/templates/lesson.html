@@ -1,17 +1,17 @@
 {% extends '_base.html' %}
 {% block content %}
 <div id="pagetop">
-<a href="/course/{{course.code}}">&lt;&lt; Back to {{course.name}}</a><br><br>
+    <a href="/course/{{course.code}}">&lt;&lt; Back to {{course.name}}</a><br><br>
 </div>
 
 {{lesson.content|safe}}
 
 {% if user and show %}
 <div class="CompletionLink">
-<a href="/complete/{{course.code}}/{{lesson.id}}">Mark Complete</a>
+    <a href="/complete/{{course.code}}/{{lesson.id}}">Mark Complete</a>
 </div>
 {% endif %}
 <div class="CompletionLink">
-   <a href="/course/{{course.code}}">&lt;&lt; Back to {{course.name}}</a>
+    <a href="/course/{{course.code}}">&lt;&lt; Back to {{course.name}}</a>
 </div>
 {% endblock %}

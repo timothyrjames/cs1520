@@ -1,11 +1,11 @@
 from email.utils import parseaddr
-from flask import Flask, redirect, render_template, request, session
 
+import flask
 import hashlib
 import lmsdata
 import lmsdatastore
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 app.secret_key = b'oaijrwoizsdfmnvoiajw34foinmzsdv98j234'
 
 
@@ -43,7 +43,7 @@ def lesson_page(coursecode, lessonid):
             if lesson_object.id in completions[course_object.code]:
                 show_completion_link = False
 
-    return show_page('lesson.html', title, course=course_object, 
+    return show_page('lesson.html', title, course=course_object,
                      lesson=lesson_object, show=show_completion_link)
 
 
@@ -59,29 +59,29 @@ def signin():
 
 @app.route('/dosignin', methods=['POST'])
 def dosignin():
-    username = request.form.get('username')
-    password = request.form.get('password')
+    username = flask.request.form.get('username')
+    password = flask.request.form.get('password')
     passwordhash = get_password_hash(password)
     user = lmsdatastore.load_user(username, passwordhash)
     if user:
-        session['user'] = user.username
-        return redirect('/')
+        flask.session['user'] = user.username
+        return flask.redirect('/')
     else:
         return show_login_page()
 
 
 @app.route('/signout')
 def signout():
-    session['user'] = None
-    return redirect('/')
+    flask.session['user'] = None
+    return flask.redirect('/')
 
 
 @app.route('/register', methods=['POST'])
 def register_user():
-    username = request.form.get('username')
-    password1 = request.form.get('password1')
-    password2 = request.form.get('password2')
-    email = request.form.get('email')
+    username = flask.request.form.get('username')
+    password1 = flask.request.form.get('password1')
+    password2 = flask.request.form.get('password2')
+    email = flask.request.form.get('email')
     errors = []
     if password1 != password2:
         errors.append('Passwords do not match.')
@@ -95,8 +95,8 @@ def register_user():
     else:
         passwordhash = get_password_hash(password1)
         lmsdatastore.save_user(user, passwordhash)
-        session['user'] = user.username
-        return redirect('/courses')
+        flask.session['user'] = user.username
+        return flask.redirect('/courses')
 
 
 @app.route('/about')
@@ -112,9 +112,9 @@ def about():
 def saveabout():
     user = get_user()
     if user:
-        about = request.form.get('about')
+        about = flask.request.form.get('about')
         lmsdatastore.save_about_user(user, about)
-        return redirect('/user/' + user)
+        return flask.redirect('/user/' + user)
     return show_login_page()
 
 
@@ -123,7 +123,7 @@ def complete(coursecode, lessonid):
     user = get_user()
     if user:
         lmsdatastore.save_completion(user, coursecode, int(lessonid))
-        return redirect('/lesson/' + coursecode + '/' + lessonid)
+        return flask.redirect('/lesson/' + coursecode + '/' + lessonid)
     return show_login_page()
 
 
@@ -153,7 +153,7 @@ def createdata():
 
 
 def get_password_hash(pw):
-    """This will give us a hashed password that will be extremlely difficult to 
+    """This will give us a hashed password that will be extremlely difficult to
     reverse.  Creating this as a separate function allows us to perform this
     operation consistently every time we use it."""
 
@@ -163,9 +163,9 @@ def get_password_hash(pw):
 
 def get_user():
     """If our session has an identified user (i.e., a user is signed in), then
-    return that username.""" 
+    return that username."""
 
-    return session.get('user', None)
+    return flask.session.get('user', None)
 
 
 def show_login_page():
@@ -175,17 +175,17 @@ def show_login_page():
 
 def show_page(page, title, courses=None, course=None, lesson=None,
               completions=None, show=True, text=None, lines=None, errors=None):
-    return render_template(page,
-                           page_title=title,
-                           user=get_user(),
-                           courses=courses,
-                           course=course,
-                           lesson=lesson,
-                           show=show,
-                           completions=completions,
-                           text=text,
-                           lines=lines,
-                           errors=errors)
+    return flask.render_template(page,
+                                 page_title=title,
+                                 user=get_user(),
+                                 courses=courses,
+                                 course=course,
+                                 lesson=lesson,
+                                 show=show,
+                                 completions=completions,
+                                 text=text,
+                                 lines=lines,
+                                 errors=errors)
 
 
 def log(msg):

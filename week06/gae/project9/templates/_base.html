@@ -1,28 +1,28 @@
 <html>
-  <head>
-    <title>{{page_title}}</title>
-    <link rel="stylesheet" href="/static/style.css">
-  </head>
-  <body>
-    <h1>{{page_title}}</h1>
-    <nav>
-      <a href="/" class="NavLink">Home</a>
-      <a href="/courses" class="NavLink">Course Listing</a>{%
-      if not user %}
-      <a href="/signup" class="NavLink">Sign Up</a>
-      <a href="/signin" class="NavLink">Sign In</a>
-      {% else %}
-      <a href="/user/{{user}}">My Info</a>
-      <a href="/about" class="NavLink">Edit Info</a>
-      <a href="/signout" class="NavLink">Sign Out</a>
-      {% endif %}
-    </nav>
-    <header>{% if errors %}{% for error in errors %}
-      <div class="Error">{{error}}</div>
-      {% endfor %}{% endif %}
-    </header>
-    <section>
-      {% block content %}{% endblock %}
-    </section>
-  </body>
+    <head>
+        <title>{{page_title}}</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <h1>{{page_title}}</h1>
+        <nav>
+            <a href="/" class="NavLink">Home</a>
+            <a href="/courses" class="NavLink">Course Listing</a>{%
+            if not user %}
+            <a href="/signup" class="NavLink">Sign Up</a>
+            <a href="/signin" class="NavLink">Sign In</a>
+            {% else %}
+            <a href="/user/{{user}}">My Info</a>
+            <a href="/about" class="NavLink">Edit Info</a>
+            <a href="/signout" class="NavLink">Sign Out</a>
+            {% endif %}
+        </nav>
+        <header>{% if errors %}{% for error in errors %}
+            <div class="Error">{{error}}</div>
+            {% endfor %}{% endif %}
+        </header>
+        <section>
+            {% block content %}{% endblock %}
+        </section>
+    </body>
 </html>

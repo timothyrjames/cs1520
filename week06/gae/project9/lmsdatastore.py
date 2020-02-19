@@ -3,7 +3,6 @@ from google.cloud import datastore
 import lmsdata
 
 
-_PROJECT_ID = 'coding4us'
 _USER_ENTITY = 'LmsUser'
 _COURSE_ENTITY = 'LmsCourse'
 _LESSON_ENTITY = 'LmsLesson'
@@ -12,7 +11,7 @@ _LESSON_ENTITY = 'LmsLesson'
 def _get_client():
     """Build a datastore client."""
 
-    return datastore.Client(_PROJECT_ID)
+    return datastore.Client()
 
 
 def log(msg):
@@ -22,9 +21,9 @@ def log(msg):
 
 
 def _load_key(client, entity_type, entity_id=None, parent_key=None):
-    """Load a datastore key using a particular client, and if known, the ID.  Note
-    that the ID should be an int - we're allowing datastore to generate them in 
-    this example."""
+    """Load a datastore key using a particular client, and if known, the ID.
+    Note that the ID should be an int - we're allowing datastore to generate
+    them in this example."""
 
     key = None
     if entity_id:
@@ -169,7 +168,7 @@ def save_about_user(username, about):
 
 
 def save_completion(username, coursecode, lessonid):
-    """Save a completion (i.e., mark a course as completed in the 
+    """Save a completion (i.e., mark a course as completed in the
     datastore)."""
 
     client = _get_client()
@@ -219,33 +218,38 @@ you more about their content.',
 wordy than the previous one.'
     })
     client.put(entity)
-    entity = datastore.Entity(
-         client.key(_COURSE_ENTITY, 'Course01', _LESSON_ENTITY),
-                    exclude_from_indexes=['content', 'title'])
+    entity = datastore.Entity(client.key(_COURSE_ENTITY,
+                                         'Course01',
+                                         _LESSON_ENTITY),
+                              exclude_from_indexes=['content', 'title'])
     entity.update({
         'title': 'Lesson 1: The First One',
         'content': 'Imagine there were lots of video content and cool things.',
     })
     client.put(entity)
-    entity = datastore.Entity(
-         client.key(_COURSE_ENTITY, 'Course01', _LESSON_ENTITY),
-                    exclude_from_indexes=['content', 'title'])
+    entity = datastore.Entity(client.key(_COURSE_ENTITY,
+                                         'Course01',
+                                         _LESSON_ENTITY),
+                              exclude_from_indexes=['content', 'title'])
     entity.update({
         'title': 'Lesson 2: Another One',
         'content': '1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11',
     })
     client.put(entity)
-    entity = datastore.Entity(
-         client.key(_COURSE_ENTITY, 'Course02', _LESSON_ENTITY),
-                    exclude_from_indexes=['content', 'title'])
+    entity = datastore.Entity(client.key(_COURSE_ENTITY,
+                                         'Course02',
+                                         _LESSON_ENTITY),
+                              exclude_from_indexes=['content', 'title'])
     entity.update({
         'title': 'Lesson 1: The First One, a Second Time',
         'content': '<p>Things</p><p>Other Things</p><p>Still More Things</p>',
     })
+
     client.put(entity)
-    entity = datastore.Entity(
-         client.key(_COURSE_ENTITY, 'Course02', _LESSON_ENTITY),
-                    exclude_from_indexes=['content', 'title'])
+    entity = datastore.Entity(client.key(_COURSE_ENTITY,
+                                         'Course02',
+                                         _LESSON_ENTITY),
+                              exclude_from_indexes=['content', 'title'])
     entity.update({
         'title': 'Lesson 2: Yes, Another One',
         'content': '<ul><li>a</li><li>b</li><li>c</li><li>d</li><li></ul>',
