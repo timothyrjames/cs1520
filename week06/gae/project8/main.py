@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request, Response
-
+import flask
 import json
 
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 
 def log(msg):
@@ -16,7 +15,7 @@ def log(msg):
 @app.route('/')
 @app.route('/index.html')
 def root():
-    return render_template('index.html', page_title='Main Page')
+    return flask.render_template('index.html', page_title='Main Page')
 
 
 @app.route('/authtoken', methods=['POST'])
@@ -25,7 +24,7 @@ def authtoken():
     d = {
         'message': 'Auth Token received at server.',
     }
-    return Response(json.dumps(d), mimetype='application/json')
+    return flask.Response(json.dumps(d), mimetype='application/json')
 
 
 if __name__ == '__main__':
