@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <link rel="stylesheet" href="/static/style.css">
+        <script src="/static/script.js">
+        </script>
+    </head>
+    <body>
+        <h1>{{title}}</h1>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+        <header>{% if errors %}{% for error in errors %}
+            <div class="Error">{{error}}</div>
+            {% endfor %}{% endif %}
+        </header>
+        <section>
+            {% block content %}{% endblock %}
+        </section>
+    </body>
+</html>
