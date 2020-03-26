@@ -1,16 +1,16 @@
 <html>
     <head>
-        <title>{{title}}</title>
+        <title>{{pd.title}}</title>
         <link rel="stylesheet" href="/static/style.css">
-        <script src="/static/script.js">
-        </script>
+        <script src="/static/script.js"></script>
+        <script src="/static/appcode.js"></script>
     </head>
     <body>
-        <h1>{{title}}</h1>
+        <h1>{{pd.title}}</h1>
         <nav>
             <a href="/">Home</a>
         </nav>
-        <header>{% if errors %}{% for error in errors %}
+        <header id="ErrorArea">{% if pd.errors %}{% for error in pd.errors %}
             <div class="Error">{{error}}</div>
             {% endfor %}{% endif %}
         </header>
