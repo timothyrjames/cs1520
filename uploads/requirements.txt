@@ -1,0 +1,5 @@
+Flask==1.1.1
+google-cloud-datastore==1.7.3
+google-cloud-storage==1.26.0
+gunicorn==20.0.4
+google-cloud-core

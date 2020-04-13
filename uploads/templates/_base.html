@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>{{pd.title}}</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <h1>{{pd.title}}</h1>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+        <header id="ErrorArea">{% if pd.errors %}{% for error in pd.errors %}
+            <div class="Error">{{error}}</div>
+            {% endfor %}{% endif %}
+        </header>
+        <section>
+            {% block content %}{% endblock %}
+        </section>
+    </body>
+</html>
